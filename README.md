@@ -1,4 +1,7 @@
-# Jekyll Feed plugin
+Note: This is a custom fork of [the default Jekyll feed plugin](https://github.com/jekyll/jekyll-feed)
+built for [the Open Buddhist University website](https://github.com/buddhist-uni/buddhist-uni.github.io/).
+
+---
 
 A Jekyll plugin to generate an Atom (RSS-like) feed of your Jekyll posts
 

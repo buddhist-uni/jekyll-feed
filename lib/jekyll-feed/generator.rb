@@ -16,6 +16,7 @@ module JekyllFeed
 
           @site.pages << make_page(path, :collection => name, :category => category)
         end
+        generate_collection_tag_feeds(name, meta) if meta["tags"] && !@site.collections['tags'].docs.empty?
       end
       generate_feed_by_tag if config["tags"] && !@site.tags.empty?
     end
@@ -69,6 +70,26 @@ module JekyllFeed
       end
 
       @collections
+    end
+
+    def generate_collection_tag_feeds(name, meta)
+      tags_config = meta["tags"]
+      tags_config = {} unless tags_config.is_a?(Hash)
+
+      except    = tags_config["except"] || []
+      only      = tags_config["only"] || @site.collections['tags'].docs.map { |d| d['slug'] }
+      tags_pool = only - except
+      tags_path = "/feed/#{name}/"
+      Jekyll.logger.info "Jekyll Feed:", "Generating #{tags_pool.size} feeds for #{name} tags"
+
+      tags_pool.each do |tag|
+        next if %r![^a-zA-Z0-9_]!.match?(tag)
+
+        path = "#{tags_path}#{tag}.xml"
+        next if file_exists?(path)
+
+        @site.pages << make_page(path, :tags => tag, :collection => name)
+      end
     end
 
     def generate_feed_by_tag
