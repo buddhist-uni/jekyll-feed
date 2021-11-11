@@ -16,6 +16,7 @@ module JekyllFeed
 
           @site.pages << make_page(path, :collection => name, :category => category)
         end
+        Jekyll.logger.info "Jekyll Feed:", "Both need to be true: #{meta['tags']} and #{@site.tags}"
         generate_collection_tag_feeds(name, meta) if meta["tags"] && !@site.tags.empty?
       end
       generate_feed_by_tag if config["tags"] && !@site.tags.empty?
@@ -73,6 +74,7 @@ module JekyllFeed
     end
 
     def generate_collection_tag_feeds(name, meta)
+      Jekyll.logger.info "Jekyll Feed:", "Attempting to Generate feeds for #{name} tags"
       tags_config = meta["tags"]
       tags_config = {} unless tags_config.is_a?(Hash)
 
