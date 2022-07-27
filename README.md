@@ -5,7 +5,7 @@ built for [the Open Buddhist University website](https://github.com/buddhist-uni
 
 A Jekyll plugin to generate an Atom (RSS-like) feed of your Jekyll posts
 
-[![Build Status](https://travis-ci.org/jekyll/jekyll-feed.svg)](https://travis-ci.org/jekyll/jekyll-feed) [![Gem Version](https://badge.fury.io/rb/jekyll-feed.svg)](https://badge.fury.io/rb/jekyll-feed)
+[![Continuous Integration](https://github.com/jekyll/jekyll-feed/actions/workflows/ruby.yml/badge.svg)](https://github.com/jekyll/jekyll-feed/actions/workflows/ruby.yml) [![Gem Version](https://badge.fury.io/rb/jekyll-feed.svg)](https://badge.fury.io/rb/jekyll-feed)
 
 ## Installation
 
@@ -248,6 +248,16 @@ feed:
 ```
 
 Note that if you include a tag that is excluded a feed will not be generated for it.
+
+## Skip development
+
+Use `disable_in_development: true` if you want to turn off feed generation when `jekyll.environment == "development"`,
+but don't want to remove the plugin (so you don't accidentally commit the removal). Default value is `false`.
+
+```yml
+feed:
+  disable_in_development: true
+```
 
 ## Contributing
 

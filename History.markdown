@@ -1,3 +1,17 @@
+## HEAD
+
+### Documentation
+
+  * Update CI status badge (#363)
+
+### Development Fixes
+
+  * Add Ruby 3.1 to the CI matrix (#365)
+
+### Minor Enhancements
+
+  * Allow disabling of jekyll-feed while in development (#370)
+
 ## 0.16.0 / 2022-01-03
 
 ### Minor Enhancements
