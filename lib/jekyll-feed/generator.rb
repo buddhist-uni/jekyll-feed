@@ -83,7 +83,7 @@ module JekyllFeed
       Jekyll.logger.info "Jekyll Feed:", "Generating #{tags_pool.size} feeds for #{name} tags"
 
       tags_pool.each do |tag|
-        next if %r![^a-zA-Z0-9_]!.match?(tag)
+        next if %r![^a-zA-Z0-9_-]!.match?(tag)
 
         path = "#{tags_path}#{tag}.xml"
         next if file_exists?(path)
